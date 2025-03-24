@@ -1,5 +1,5 @@
 provider "google" {
-    project = "siva-sai-447213"
+    project = "shiva-project-453013"
     region = "us-central1"
     
 }
