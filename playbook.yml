@@ -1,0 +1,22 @@
+---
+- name: Install Git on all servers
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Update apt cache (for Debian/Ubuntu)
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Install Git on Debian/Ubuntu
+      apt:
+        name: git
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Install Git on RedHat/CentOS
+      yum:
+        name: git
+        state: present
+      when: ansible_os_family == "RedHat"
